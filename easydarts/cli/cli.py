@@ -3,9 +3,11 @@
 Command line interface (CLI) for easydarts
 """
 
+
 import argparse
 import pkg_resources
 from easydarts.cli.calibration import cli_command_calibration
+from easydarts.cli.scorer import cli_command_scorer
 
 
 try:
@@ -55,10 +57,23 @@ def main():
 		help='starts calibration process')
 
 
+    #
+    # -> Commands -> Scorer
+    #
+
+
+    scorer_parser = commands.add_parser(
+		'scorer', 
+		help='opens window with score program')
+
+
     # ------------------------------------
+
 
     args = vars(parser.parse_args())
     command = args.get('command')
 
+
     if command == 'calibrate': cli_command_calibration(args)
+    if command == 'scorer': cli_command_scorer(args)
     else: parser.print_help()
