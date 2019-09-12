@@ -6,3 +6,6 @@ build:
 
 publish: install build
 	twine upload dist/* 
+
+console:
+	ipython

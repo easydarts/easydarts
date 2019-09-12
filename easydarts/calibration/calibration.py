@@ -4,4 +4,4 @@ Calibration
 
 
 def main():
-    print("Calibration")
+    print("Starting calibration process")

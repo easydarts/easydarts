@@ -24,7 +24,8 @@ def main():
 
 	parser = argparse.ArgumentParser(
 		prog='easydarts',
-		description='command line interface for easydarts')
+		description='command line interface for easydarts'
+	)
 
 
 	#
@@ -34,7 +35,9 @@ def main():
 
 	parser.add_argument(
 		'-v', '--version', 
-		action='version', version='easydarts %s' % version)
+		action='version', 
+		version='easydarts %s' % version
+	)
 
 
 	#
@@ -44,7 +47,9 @@ def main():
 
 	commands = parser.add_subparsers(
 		help='',
-		dest='command', metavar='<commands>')
+		dest='command', 
+		metavar='<commands>'
+	)
 
 
 	#
@@ -52,9 +57,17 @@ def main():
 	#
 
 
-	commands.add_parser(
+	calibration_parser = commands.add_parser(
 		'calibrate', 
-		help='starts calibration process')
+		help='starts calibration process'
+	)
+
+
+	calibration_parser.add_argument(
+		'-c', '--cameras', 
+		default=2,
+		help='number of cameras',
+	)
 
 
 	#
@@ -64,7 +77,8 @@ def main():
 
 	commands.add_parser(
 		'scorer', 
-		help='opens window with score program')
+		help='opens window with score program'
+	)
 
 
 	# ------------------------------------
@@ -77,10 +91,7 @@ def main():
 		"scorer": cli_scorer,
 	}
 	args = vars(parser.parse_args())
-	command = commands.get(
-		args.get('command'),
-		parser.print_help,
-	)
+	command = commands.get(args.get('command'), parser.print_help)
 
 
 	command(args)
