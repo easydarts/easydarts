@@ -1,16 +1,15 @@
 # -*- coding: utf-8 -*-
 from setuptools import setup, find_packages
 
-try:
-    long_description = open("README.rst").read()
-except IOError:
-    long_description = "Steel darts calibration and score recognition system"
+with open("README.md", "r") as fh:
+    long_description = fh.read()
 
 setup(
     name="easydarts",
     version="0.0.1",
     description="Steel darts calibration and score recognition system",
     long_description=long_description,
+    long_description_content_type="text/markdown",
     license="MIT",
     author="Cidevant Von Goethe",
     author_email="cidevant@mail.ru",
@@ -28,7 +27,7 @@ setup(
     ],
     classifiers=[
         "Programming Language :: Python",
-        "Programming Language :: Python :: 2.7",
         "Programming Language :: Python :: 3.6",
-    ]
+    ],
+    python_requires='>=3.6',
 )
