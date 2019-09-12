@@ -5,12 +5,14 @@ Command line interface (CLI) for easydarts
 
 import argparse
 import pkg_resources
-from easydarts.cli.commands.calibration import cli_command_calibration
+from easydarts.cli.calibration import cli_command_calibration
+
 
 try:
 	version = pkg_resources.require("easydarts")[0].version
 except Exception:
 	version = '[error]'
+
 
 def main():
     #
@@ -49,7 +51,7 @@ def main():
 
 
     calibration_parser = commands.add_parser(
-		'init', 
+		'calibrate', 
 		help='starts calibration process')
 
 
@@ -58,5 +60,5 @@ def main():
     args = vars(parser.parse_args())
     command = args.get('command')
 
-    if command == 'init': cli_command_calibration(args)
+    if command == 'calibrate': cli_command_calibration(args)
     else: parser.print_help()
