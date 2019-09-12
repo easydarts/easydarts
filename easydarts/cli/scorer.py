@@ -8,7 +8,7 @@ from easydarts.scorer.scorer import main as scorer
 
 def main(args):
     """
-    Opens windows with scoring program
+    Opens window with scoring program
     """
 
 

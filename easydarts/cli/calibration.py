@@ -11,5 +11,6 @@ def main(args):
     Runs calibation process and saves output to current folder
     """
     
+    
     print("CLI calibration")
     calibration()
