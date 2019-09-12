@@ -17,12 +17,12 @@ except Exception:
 
 
 def main():
-    #
+	#
 	# Arguments parser
 	#
 
 
-    parser = argparse.ArgumentParser(
+	parser = argparse.ArgumentParser(
 		prog='easydarts',
 		description='command line interface for easydarts')
 
@@ -32,7 +32,7 @@ def main():
 	#
 
 
-    parser.add_argument(
+	parser.add_argument(
 		'-v', '--version', 
 		action='version', version='easydarts %s' % version)
 
@@ -42,38 +42,41 @@ def main():
 	#
 
 
-    commands = parser.add_subparsers(
+	commands = parser.add_subparsers(
 		help='',
 		dest='command', metavar='<commands>')
 
 
-    #
-    # -> Commands -> Calibrate
-    #
+	#
+	# -> Commands -> Calibrate
+	#
 
 
-    calibration_parser = commands.add_parser(
+	commands.add_parser(
 		'calibrate', 
 		help='starts calibration process')
 
 
-    #
-    # -> Commands -> Scorer
-    #
+	#
+	# -> Commands -> Scorer
+	#
 
 
-    scorer_parser = commands.add_parser(
+	commands.add_parser(
 		'scorer', 
 		help='opens window with score program')
 
 
-    # ------------------------------------
+	# ------------------------------------
+	# Execute
+	# ------------------------------------
 
 
-    args = vars(parser.parse_args())
-    command = args.get('command')
+	commands = {
+		"calibrate": cli_calibration,
+		"scorer": cli_scorer,
+	}
 
-
-    if command == 'calibrate': cli_calibration(args)
-    if command == 'scorer': cli_scorer(args)
-    else: parser.print_help()
+	args = vars(parser.parse_args())
+	command = commands.get(args.get('command'), parser.print_help)
+	command(args)
