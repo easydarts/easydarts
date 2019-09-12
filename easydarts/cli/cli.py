@@ -76,7 +76,11 @@ def main():
 		"calibrate": cli_calibration,
 		"scorer": cli_scorer,
 	}
-
 	args = vars(parser.parse_args())
-	command = commands.get(args.get('command'), parser.print_help)
+	command = commands.get(
+		args.get('command'),
+		parser.print_help,
+	)
+
+
 	command(args)
