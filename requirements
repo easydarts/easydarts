@@ -1,0 +1,5 @@
+pylint
+ipython
+opencv-python
+numpy
+matplotlib
