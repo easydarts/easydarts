@@ -6,8 +6,8 @@ Command line interface (CLI) for easydarts
 
 import argparse
 import pkg_resources
-from easydarts.cli.calibration import cli_command_calibration
-from easydarts.cli.scorer import cli_command_scorer
+from easydarts.cli.calibration import main as cli_calibration
+from easydarts.cli.scorer import main as cli_scorer
 
 
 try:
@@ -74,6 +74,6 @@ def main():
     command = args.get('command')
 
 
-    if command == 'calibrate': cli_command_calibration(args)
-    if command == 'scorer': cli_command_scorer(args)
+    if command == 'calibrate': cli_calibration(args)
+    if command == 'scorer': cli_scorer(args)
     else: parser.print_help()
